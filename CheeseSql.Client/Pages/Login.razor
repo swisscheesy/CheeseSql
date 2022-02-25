@@ -1,0 +1,40 @@
+﻿@page "/login"
+@layout MainLayout
+@inherits FluxorComponent
+
+
+<MudContainer MaxWidth="MaxWidth.Small">
+    <MudCard>
+
+        <MudForm Model="@_connectionOptions" @ref="@_form">
+            <MudCardContent>
+                <MudTextField @bind-Value="_connectionOptions.Host" Immediate="true" Label="Host" For="@(() => _connectionOptions.Host)"/>
+
+                <MudTextField @bind-Value="_connectionOptions.Port" Immediate="true" Label="Port" For="@(() => _connectionOptions.Port)"/>
+
+                <MudTextField @bind-Value="_connectionOptions.Username" Immediate="true" Label="UserName" For="@(() => _connectionOptions.Username)"/>
+
+                <MudTextField @bind-Value="_connectionOptions.Password" Immediate="true" Label="Password" InputType="InputType.Password" For="@(() => _connectionOptions.Password)"/>
+
+                <MudTextField @bind-Value="_connectionOptions.Database" Immediate="true" Label="Database" For="@(() => _connectionOptions.Database)"/>
+
+            </MudCardContent>
+        </MudForm>
+
+        <MudCardActions>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto" OnClick="@(() => Connect())">Connect</MudButton>
+        </MudCardActions>
+        @if (DatabaseState.Value.IsConnected is not null)
+        {
+            var showConnectPopup = DatabaseState.Value.IsConnected ?? false;
+
+            <MudPopover Open="@showConnectPopup" Fixed="true" Class="px-4 pt-4" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter">
+                <div class="d-flex flex-column">
+                    <MudText>Connected!.</MudText>
+                </div>
+            </MudPopover>
+        }
+
+
+    </MudCard>
+</MudContainer>

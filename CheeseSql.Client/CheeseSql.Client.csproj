@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+        <Exec Command="npm run buildcss" />
+    </Target>
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Fluxor.Blazor.Web" Version="5.0.0" />
+        <PackageReference Include="Fluxor.Blazor.Web.ReduxDevTools" Version="5.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.12" />
+        <PackageReference Include="MudBlazor" Version="5.2.4" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+        <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <_ContentIncludedByDefault Remove="wwwroot\sample-data\weather.json" />
+        <_ContentIncludedByDefault Remove="wwwroot\css\open-iconic\FONT-LICENSE" />
+        <_ContentIncludedByDefault Remove="wwwroot\css\open-iconic\font\css\open-iconic-bootstrap.min.css" />
+        <_ContentIncludedByDefault Remove="wwwroot\css\open-iconic\font\fonts\open-iconic.eot" />
+        <_ContentIncludedByDefault Remove="wwwroot\css\open-iconic\font\fonts\open-iconic.otf" />
+        <_ContentIncludedByDefault Remove="wwwroot\css\open-iconic\font\fonts\open-iconic.svg" />
+        <_ContentIncludedByDefault Remove="wwwroot\css\open-iconic\font\fonts\open-iconic.ttf" />
+        <_ContentIncludedByDefault Remove="wwwroot\css\open-iconic\font\fonts\open-iconic.woff" />
+        <_ContentIncludedByDefault Remove="wwwroot\css\open-iconic\ICON-LICENSE" />
+        <_ContentIncludedByDefault Remove="wwwroot\css\open-iconic\README.md" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="wwwroot\css\bootstrap\bootstrap.min.css.map" />
+        <None Include="wwwroot\css\font\quicksand-v8-latin-300.woff2" />
+        <None Include="wwwroot\css\font\quicksand-v8-latin-500.woff2" />
+        <None Include="wwwroot\css\font\quicksand-v8-latin-700.woff2" />
+        <None Include="wwwroot\css\font\quicksand-v8-latin-regular.woff2" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\CheeseSql.Shared\CheeseSql.Shared.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Infrastructure\Extensions" />
+    </ItemGroup>
+
+</Project>

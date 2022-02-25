@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.12" />
+        <PackageReference Include="Npgsql" Version="5.0.12" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+        <ProjectReference Include="..\CheeseSql.Client\CheeseSql.Client.csproj" />
+        <ProjectReference Include="..\CheeseSql.Shared\CheeseSql.Shared.csproj" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+        <Folder Include="Extensions" />
+        <Folder Include="Logs" />
+        <Folder Include="Middlewares" />
+        <Folder Include="Settings" />
+    </ItemGroup>
+
+</Project>
