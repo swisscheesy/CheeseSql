@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using CheeseSql.Server.Services.Database;
-using CheeseSql.Shared.Models.Authentication;
+using CheeseSql.Shared.Models.Database;
+using CheeseSql.Shared.Models.Database.Authentication;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CheeseSql.Server.Controllers.v1
@@ -19,10 +21,27 @@ namespace CheeseSql.Server.Controllers.v1
         [HttpPost("connect")]
         public async Task<IActionResult> ConnectToDatabase(ConnectionOptions options)
         {
-            var success = await _databaseService.OpenConnectionToServer(options);
-            if (success)
-                return Ok();
+            Console.WriteLine("[Controller] Connect endpoint hit");
+            var retValue = await _databaseService.OpenConnectionToServer(options);
+            if (retValue != null)
+                return Ok(new {retValue.Host, retValue.Port, retValue.Username, retValue.Database});
             return NotFound();
+        }
+
+        [HttpPost("query")]
+        public async Task<IActionResult> QueryDatabase(DatabaseQuery query)
+        {
+            Console.WriteLine("[Controller] Query endpoint hit");
+            if (query != null)
+            {
+                Console.WriteLine("[Controller] Found query");
+                var retValue = await _databaseService.QueryDatabase(query);
+
+                return Ok(retValue);
+            }
+
+            Console.WriteLine("[Controller] No Query Found");
+            return BadRequest();
         }
     }
 }

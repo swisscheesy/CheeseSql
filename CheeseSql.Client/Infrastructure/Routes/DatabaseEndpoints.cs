@@ -9,5 +9,10 @@
         {
             return "api/database/connect";
         }
+
+        public static string QueryDatabase()
+        {
+            return "/api/database/query";
+        }
     }
 }

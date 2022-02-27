@@ -5,6 +5,11 @@
 
 <MudContainer MaxWidth="MaxWidth.Small">
     <MudCard>
+        @* If user is alreacdy connected to the database, then navigate directly to Dashboard *@
+        @if (DatabaseState.Value.IsConnected == true)
+        {
+            NavigateToDatabaseDashboard();
+        }
 
         <MudForm Model="@_connectionOptions" @ref="@_form">
             <MudCardContent>

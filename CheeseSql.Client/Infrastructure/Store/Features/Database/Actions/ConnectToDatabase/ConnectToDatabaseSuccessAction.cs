@@ -1,16 +1,15 @@
-﻿using CheeseSql.Shared.Models.Authentication;
-
-namespace CheeseSql.Client.Infrastructure.Store.Features.Database.Actions.ConnectToDatabase
+﻿namespace CheeseSql.Client.Infrastructure.Store.Features.Database.Actions.ConnectToDatabase
 {
     public class ConnectToDatabaseSuccessAction
     {
-        public ConnectToDatabaseSuccessAction(bool isConnected, ConnectionOptions options)
+        public ConnectToDatabaseSuccessAction(bool isConnected, string connectedDatabase)
         {
             IsConnected = isConnected;
-            ConnectionOptions = options;
+            ConnectedDatabase = connectedDatabase;
         }
 
         public bool IsConnected { get; }
-        public ConnectionOptions ConnectionOptions { get; }
+
+        public string ConnectedDatabase { get; }
     }
 }

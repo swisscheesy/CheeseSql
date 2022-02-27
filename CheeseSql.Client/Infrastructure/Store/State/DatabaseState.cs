@@ -1,6 +1,4 @@
-﻿using CheeseSql.Shared.Models.Authentication;
-
-namespace CheeseSql.Client.Infrastructure.Store.State
+﻿namespace CheeseSql.Client.Infrastructure.Store.State
 {
     /// <summary>
     ///     State for a Postgres Database instance that will be interacted with
@@ -8,14 +6,14 @@ namespace CheeseSql.Client.Infrastructure.Store.State
     public class DatabaseState : RootState
     {
         public DatabaseState(bool isLoading, string? currentErrorMessage, bool? isConnected,
-            ConnectionOptions? connectionOptions)
+            string? connectionDatabase)
             : base(isLoading, currentErrorMessage)
         {
             IsConnected = isConnected;
-            ConnectionOptions = connectionOptions;
+            ConnectionDatabase = connectionDatabase;
         }
 
         public bool? IsConnected { get; }
-        public ConnectionOptions? ConnectionOptions { get; }
+        public string? ConnectionDatabase { get; }
     }
 }

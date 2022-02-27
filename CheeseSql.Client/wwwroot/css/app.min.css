@@ -436,12 +436,19 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mt-4 {
   margin-top: 1rem;
 }
+.mt-16 {
+  margin-top: 4rem;
+}
 .table {
   display: table;
 }
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
+}
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 .pt-4 {
   padding-top: 1rem;

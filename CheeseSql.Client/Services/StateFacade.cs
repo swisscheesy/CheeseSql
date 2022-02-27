@@ -1,5 +1,4 @@
 ﻿using CheeseSql.Client.Infrastructure.Store.Features.Database.Actions.ConnectToDatabase;
-using CheeseSql.Shared.Models.Authentication;
 using Fluxor;
 using Microsoft.Extensions.Logging;
 
@@ -16,10 +15,19 @@ namespace CheeseSql.Client.Services
             _dispatcher = dispatcher;
         }
 
-        public void ConnectToDatabase(ConnectionOptions options)
+        /// <summary>
+        ///     Dispatches a ConnectToDatabase action
+        /// </summary>
+        /// <param name="connectionDatabase"></param>
+        public void ConnectToDatabase(string connectionDatabase)
         {
             _logger.LogInformation("Action: Attempting to connect to Postgres Database");
-            _dispatcher.Dispatch(new ConnectToDatabaseAction(options));
+            _dispatcher.Dispatch(new ConnectToDatabaseAction(connectionDatabase));
+        }
+
+        public void IsConnectedQuery(string query)
+        {
+            _logger.LogInformation("Action: Querying the database to check connection");
         }
     }
 }

@@ -23,7 +23,7 @@ namespace CheeseSql.Server
         {
             services.AddRazorPages();
             services.AddControllersWithViews();
-            services.AddScoped<IDatabaseService, DatabaseService>();
+            services.AddSingleton<IDatabaseService, DatabaseService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

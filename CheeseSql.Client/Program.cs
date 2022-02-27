@@ -1,6 +1,7 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using CheeseSql.Client.Infrastructure.Managers;
 using CheeseSql.Client.Services;
 using Fluxor;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -26,6 +27,7 @@ namespace CheeseSql.Client
 
             // Add State Facade Service
             builder.Services.AddScoped<StateFacade>();
+            builder.Services.AddScoped<DatabaseManager>();
 
             // Add Mudblazor Component Library
             builder.Services.AddMudServices();
